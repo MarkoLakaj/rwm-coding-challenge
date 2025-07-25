@@ -8,10 +8,13 @@ test.describe('Positive and negative scenarios for deleting the article via DELE
 
     test('DELETE an article as an owner should return 204', async({request, token}) => {
 
+        // Create article to delete
         const { slug } = await createArticleAndReturnSlug(request, token)
 
+        // Delete article and verify status
         const deleteResponse = await deleteArticle(request, token, slug)
         expect(deleteResponse.status()).toEqual(204)
+        // Verify article no longer exists
         const articleDeletedResponse = await getArticleBySlugID(request, slug) 
         expect(articleDeletedResponse.status()).toEqual(404)
 
@@ -22,6 +25,7 @@ test.describe('Positive and negative scenarios for deleting the article via DELE
         const { slug } = await createArticleAndReturnSlug(request, token)
 
         try {
+            // Attempt delete without token
             const deleteResponse = await request.delete(`${process.env.BASE_API_URL}/articles/${slug}`)
             expect(deleteResponse.status()).toEqual(401)
             const deleteResponseBody = await deleteResponse.json()
@@ -29,7 +33,7 @@ test.describe('Positive and negative scenarios for deleting the article via DELE
             expect(deleteResponseBody.message).toBe('missing authorization credentials')
 
         } finally {
-            // Clean-up
+            // Clean-up to avoid leaving test data behind
             await deleteArticle(request, token, slug)
         }
 
@@ -49,7 +53,7 @@ test.describe('Positive and negative scenarios for deleting the article via DELE
 
         } finally {
 
-            // Clean-up
+            // Clean-up valid article
             await deleteArticle(request, token, slug)
 
         }

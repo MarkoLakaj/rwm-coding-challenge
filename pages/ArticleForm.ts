@@ -32,6 +32,7 @@ export class ArticleForm {
     }
 
     async enterArticleTags(...tags: string[]): Promise<void> {
+        // Fill and submit each tag individually by pressing 'Enter'
         for (const tag of tags) {
             await this.articleTags.fill(tag)
             await this.articleTags.press('Enter')
@@ -39,6 +40,7 @@ export class ArticleForm {
     }
 
     async fillOutArticleForm(title: string, subject: string, text: string): Promise<void> {
+        // Convenience method for quick form fill during tests; excludes tags by design
         await this.articleTitle.fill(title)
         await this.articleSubject.fill(subject)
         await this.articleText.fill(text)
@@ -46,6 +48,7 @@ export class ArticleForm {
 
     async clickPublishArticleButton(): Promise<void> {
         await this.publishArticleButton.click()
+        // Assert post-click navigation to article detail page
         await expect(this.page).toHaveURL(/\/article\//, {timeout: 5000})
     }
 
@@ -58,11 +61,10 @@ export class ArticleForm {
     }
 
     async clearArticleForm(): Promise<void> {
-
+        // Clears only text fields; tags are ignored since they’re typically chip-based and may need a different strategy
         await this.clearField(this.articleTitle);
         await this.clearField(this.articleSubject);
         await this.clearField(this.articleText);
-
     }
 
 }

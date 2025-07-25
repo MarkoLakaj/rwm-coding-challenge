@@ -48,6 +48,7 @@ test.describe('Positive and negative scenarios for updating articles via PUT', (
 
             expect(updateRes.status()).toBe(200);
             const updateBody = await updateRes.json();
+            // Check that title updated but body remains the same
             expect(updateBody.article.title).toBe(partialPayload.article.title)
             expect(updateBody.article.body).toBe(payload.article.body)
             updatedSlug = updateBody.article.slug

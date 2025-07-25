@@ -18,6 +18,7 @@ test.describe('Positive and negative scenarios for fetching articles via GET', (
 
     test('GET a single article should result in 200', async({request, token}) => {
 
+        // Create article to fetch
         const { slug } = await createArticleAndReturnSlug(request, token)
         
         try {
@@ -31,7 +32,7 @@ test.describe('Positive and negative scenarios for fetching articles via GET', (
 
         } finally {
 
-            // Clean-up
+            // Clean-up created article
             await deleteArticle(request, token, slug)
         }
         

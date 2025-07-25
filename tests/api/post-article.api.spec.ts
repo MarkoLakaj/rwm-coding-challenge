@@ -41,7 +41,7 @@ test.describe('Positive and negative scenarios for creating articles via POST', 
 
         const invalidPayload = {    
             article: {
-                // missing title
+                // title intentionally missing to trigger validation error
                 description: "New Description",
                 body: "New Body",
                 tagList: [],

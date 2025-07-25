@@ -12,7 +12,7 @@ test.describe('Testing the login feature via API', () => {
 
         const body = await response.json();
 
-        // Check if token and user are returned
+        // Validate user object and token presence
         expect(body.user).toBeDefined();
         expect(body.user.email).toBe(process.env.LOGIN_EMAIL);
         expect(body.user.token).toBeTruthy();
@@ -31,7 +31,7 @@ test.describe('Testing the login feature via API', () => {
 
         const  body = await response.json();
 
-        // Assert structure and message
+        // Validate error message for invalid email or password
         expect(body).toHaveProperty('errors');
         expect(body.errors).toHaveProperty('email or password');
         expect(body.errors['email or password']).toEqual(['is invalid']);
@@ -47,7 +47,7 @@ test.describe('Testing the login feature via API', () => {
 
         const  body = await response.json();
 
-        // Assert structure and message
+        // Validate error message for invalid email or password
         expect(body).toHaveProperty('errors');
         expect(body.errors).toHaveProperty('email or password');
         expect(body.errors['email or password']).toEqual(['is invalid']);
@@ -63,7 +63,7 @@ test.describe('Testing the login feature via API', () => {
 
         const  body = await response.json();
 
-        // Assert structure and message
+        // Validate error message for blank email
         expect(body).toHaveProperty('errors');
         expect(body.errors).toHaveProperty('email');
         expect(body.errors['email']).toEqual(['can\'t be blank']);
@@ -79,7 +79,7 @@ test.describe('Testing the login feature via API', () => {
 
         const  body = await response.json();
 
-        // Assert structure and message
+        // Validate error message for blank password
         expect(body).toHaveProperty('errors');
         expect(body.errors).toHaveProperty('password');
         expect(body.errors['password']).toEqual(['can\'t be blank']);
