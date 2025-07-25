@@ -24,52 +24,47 @@ Automated end-to-end testing project for a React + Node.js application, using Pl
 ## 🛠️ Local Installation & Usage
 
 Clone the repository and install dependencies:
+
 ```bash
 git clone https://github.com/MarkoLakaj/rwm-coding-challenge.git
 cd rwm-coding-challenge
-npm ci --force
-Install Playwright browsers:
+npm install --force
 
-bash
-Copy
-Edit
+```
+
+Install Playwright browsers:
+```bash
 npx playwright install --with-deps --force
+```
+
 Run all tests (UI + API):
 
-bash
-Copy
-Edit
+```bash
 npx playwright test
+```
+
+---
+
 ## 🧪 Test Structure
-UI tests: located in tests/ui/
 
-API tests: located in tests/api/
+- UI tests: located in tests/e2e/
+- API tests: located in tests/api/
+- Playwright configured via playwright.config.ts
 
-Playwright configured via playwright.config.ts
+---
 
-## ⚡ Developer & CI Workflow
-Your GitHub Actions workflow mirrors these local commands:
-
-yaml
-Copy
-Edit
-- uses: actions/checkout@v4
-- uses: actions/setup-node@v4
-  with:
-    node-version: lts/*
-- name: Install dependencies
-  run: npm ci --force
-- name: Install Playwright Browsers
-  run: npx playwright install --with-deps --force
-- name: Run Playwright tests
-  run: npx playwright test
 ## 🧩 Dynamic Test Data
-We use Faker to generate realistic test data—names, emails, text, and more—making tests more robust and less brittle.
+Faker is used to generate realistic test data — including names, emails, text, and more — making tests more robust and less brittle.
 
-📊 Generate HTML Reports
+---
+
+## 📊 Generate HTML Reports
 After tests complete, generate reports:
 
-bash
-Copy
-Edit
+```bash
 npx playwright show-report
+```
+
+
+
+
