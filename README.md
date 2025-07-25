@@ -40,14 +40,14 @@ bash
 Copy
 Edit
 npx playwright test
-🧪 Test Structure
+## 🧪 Test Structure
 UI tests: located in tests/ui/
 
 API tests: located in tests/api/
 
 Playwright configured via playwright.config.ts
 
-⚡ Developer & CI Workflow
+## ⚡ Developer & CI Workflow
 Your GitHub Actions workflow mirrors these local commands:
 
 yaml
@@ -63,7 +63,7 @@ Edit
   run: npx playwright install --with-deps --force
 - name: Run Playwright tests
   run: npx playwright test
-🧩 Dynamic Test Data
+## 🧩 Dynamic Test Data
 We use Faker to generate realistic test data—names, emails, text, and more—making tests more robust and less brittle.
 
 📊 Generate HTML Reports
