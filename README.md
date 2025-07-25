@@ -21,6 +21,15 @@ Automated end-to-end testing project for a React + Node.js application, using Pl
 
 ---
 
+## 📝 Note for reviewer:
+For your convenience, the .env file is included in this repository to allow easier and faster test execution.
+
+In a real production setup, sensitive environment variables should always be managed via GitHub Secrets or other secure secret management solutions.
+
+✅ This project is already configured to use GitHub Secrets in CI workflows.
+
+---
+
 ## 🛠️ Local Installation & Usage
 
 Clone the repository and install dependencies:
